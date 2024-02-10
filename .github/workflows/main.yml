@@ -9,6 +9,7 @@ on:
 env:
   AZURE_WEBAPP_NAME: "webapp-pruebasnet-prod-southcentralus-001"
   AZURE_WEBAPP_PACKAGE_PATH: "./publish"
+  PROJECT_DOTNET: "./ProyectosNet.csproj"
 
 jobs:
   build:
@@ -23,7 +24,7 @@ jobs:
           dotnet-version: "6.0.x"
 
       - name: "Restore"
-        run: dotnet restore ./ProyectosNet.csproj
+        run: dotnet restore "${{env.PROJECT_DOTNET}}"
 
       - name: "Build"
         run: dotnet build ./ProyectosNet.csproj --configuration Release --no-restore
